@@ -5,8 +5,9 @@ RC_FILES=.emacs
 
 ln -s `pwd`/.emacs ~/.emacs || true
 
+mkdir -p ~/bin
 #bin tools
-BIN_APPS=python_check_and_tests.sh submit_xml_as_jenkins_job.sh
+BIN_APPS="python_check_and_tests.sh submit_xml_as_jenkins_job.sh"
 for APP in ${BIN_APPS}; do
     ln -s `pwd`/${APP} ~/bin/${APP} || true
 done
