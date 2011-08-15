@@ -1,7 +1,7 @@
 #!/bin/bash
 #Run in the tools dir. Deploys the new settings on a target machine
 #rc files
-RC_FILES=.emacs
+RC_FILES=.emacs .pylint
 
 ln -s `pwd`/.emacs ~/.emacs || true
 
