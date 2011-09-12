@@ -31,10 +31,14 @@ def pylint_errors_only_in_dir(target_dir):
 
 def run_tests_in_dir(target_dir):
     """Run each of the python tests in the directory"""
-    for test in glob(os.path.join(target_dir,"test*.py")):
-        print "Testing",test
-        subprocess.check_call("python -u " + test, cwd = target_dir, shell=True)
-
+    try:
+        for test in glob(os.path.join(target_dir,"test*.py")):
+            print "Testing",test
+            subprocess.check_call("python -u " + test, cwd = target_dir, shell=True)
+    except subprocess.CalledProcessError:
+        print "Testing failed."
+        exit(1)
+        
 def main(target_dir):
     os.path.isdir(target_dir) or usage("Target "+ target_dir + " doesn't exist or is not a directory")
     python_files = glob(os.path.join(target_dir,"*.py"))
